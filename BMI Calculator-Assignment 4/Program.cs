@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/* BMI Calculator
+ * Description: COMP123 Assignment
+ * Author: Chowdhury Atika Parvin
+ * ID# 301007336
+ * Version: 1.0 Project started
+ * Last modified: July 21, 2019
+ */
 namespace BMI_Calculator_Assignment_4
 {
     static class Program
@@ -16,7 +22,7 @@ namespace BMI_Calculator_Assignment_4
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new BMICalculator());
         }
     }
 }
