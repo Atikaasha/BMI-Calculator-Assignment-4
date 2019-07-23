@@ -12,8 +12,9 @@ namespace BMI_Calculator_Assignment_4
 {
     public partial class BMICalculator : Form
     {
-        public TextBox activeTextBox { get; set; }
-        public string outPutString { get; set; }
+        public TextBox ActiveTextBox { get; set; }
+        public string OutPutString { get; set; }
+        private double Result { get; set; }
 
         public BMICalculator()
         {
@@ -28,21 +29,23 @@ namespace BMI_Calculator_Assignment_4
             bool numericButton = int.TryParse(tag, out numericValue);
             if(numericButton)
             {
-                activeTextBox.Text += tag;
+                ActiveTextBox.Text += tag;
             }
             else
             {
                 switch (tag)
                 {
                     case "back":
-                        activeTextBox.Text = activeTextBox.Text.Remove(activeTextBox.Text.Length - 1);
+                        ActiveTextBox.Text = ActiveTextBox.Text.Remove(ActiveTextBox.Text.Length - 1);
                         break;
                     case "reset":
                         Reset();
                         break;
                     case "calculate":
                         CalculateResult();
+                        ShowStatus();
                         break;
+                        
 
                 }
             }
@@ -50,13 +53,13 @@ namespace BMI_Calculator_Assignment_4
 
         private void activeTextBox_Click(object sender, EventArgs e)
         {
-            activeTextBox = sender as TextBox;
+            ActiveTextBox = sender as TextBox;
             //activeTextBox.Text = "";
         }
 
         private void BMICalculator_Load(object sender, EventArgs e)
         {
-            activeTextBox = heightTextBox;
+            ActiveTextBox = heightTextBox;
         }
 
         private void Reset()
@@ -65,22 +68,67 @@ namespace BMI_Calculator_Assignment_4
             weightTextBox.Text = "";
             resultTextBox.Text = "";
             statusTextBox.Text = "";
+            progressBar.Value = 0;
         }
 
         private string CalculateResult()
         {
             double height = Convert.ToDouble(heightTextBox.Text);
             double weight = Convert.ToDouble(weightTextBox.Text);
-            double result;
+            //double result;
             if(metricButton.Checked == true)
             {
-                result = (weight / height / height) * 1000;
+                Result = (weight / height / height) * 10000;
             }
             else
             {
-                result = weight * 703 / (height * height);
+                Result = weight * 703 / (height * height);
             }
-            return resultTextBox.Text = String.Format($"{result:F2}".ToString());
+            return resultTextBox.Text = String.Format($"{Result:F2}".ToString());
+        }
+
+        private void metricButton_Checked(object sender, EventArgs e)
+        {
+            heightUnitLabel.Text = "cm";
+            weightUnitLabel.Text = "kg";
+        }
+
+        private void imperialButton_Checked(object sender, EventArgs e)
+        {
+            heightUnitLabel.Text = "inch";
+            weightUnitLabel.Text = "lb";
+        }
+        private void ShowStatus()
+        {
+            progressBar.Maximum = 4;
+            if(Result<18.5)
+            {
+                statusTextBox.Text = "Underweight";
+                statusTextBox.ForeColor = Color.Blue;
+                progressBar.Value = 1;
+                progressBar.ForeColor = Color.Blue;
+            }
+            else if(Result>=18.5 && Result<=24.9)
+            {
+                statusTextBox.Text = "Normal";
+                statusTextBox.ForeColor = Color.Green;
+                progressBar.Value = 2;
+                progressBar.ForeColor = Color.Green;
+            }
+            else if (Result >= 25 && Result <= 29.9)
+            {
+                statusTextBox.Text = "Overweight";
+                statusTextBox.ForeColor = Color.Firebrick;
+                progressBar.Value = 3;
+                progressBar.ForeColor = Color.Firebrick;
+            }
+            else if (Result > 30)
+            {
+                statusTextBox.Text = "Obese";
+                statusTextBox.ForeColor = Color.Red;
+                progressBar.Value = 4;
+                progressBar.ForeColor = Color.Red;
+            }
         }
     }
 }

@@ -68,6 +68,8 @@
             this.metricButton.TabStop = true;
             this.metricButton.Text = "Metric";
             this.metricButton.UseVisualStyleBackColor = true;
+            this.metricButton.CheckedChanged += new System.EventHandler(this.metricButton_Checked);
+            this.metricButton.Click += new System.EventHandler(this.metricButton_Checked);
             // 
             // imperialButton
             // 
@@ -78,6 +80,8 @@
             this.imperialButton.TabIndex = 1;
             this.imperialButton.Text = "Imperial";
             this.imperialButton.UseVisualStyleBackColor = true;
+            this.imperialButton.CheckedChanged += new System.EventHandler(this.imperialButton_Checked);
+            this.imperialButton.Click += new System.EventHandler(this.imperialButton_Checked);
             // 
             // heightTextBox
             // 
@@ -125,26 +129,22 @@
             // heightUnitLabel
             // 
             this.heightUnitLabel.AutoSize = true;
-            this.heightUnitLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.heightUnitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.heightUnitLabel.ForeColor = System.Drawing.SystemColors.WindowText;
             this.heightUnitLabel.Location = new System.Drawing.Point(250, 56);
             this.heightUnitLabel.Name = "heightUnitLabel";
-            this.heightUnitLabel.Size = new System.Drawing.Size(62, 26);
+            this.heightUnitLabel.Size = new System.Drawing.Size(0, 24);
             this.heightUnitLabel.TabIndex = 5;
-            this.heightUnitLabel.Text = "label1";
             // 
             // weightUnitLabel
             // 
             this.weightUnitLabel.AutoSize = true;
-            this.weightUnitLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.weightUnitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weightUnitLabel.ForeColor = System.Drawing.SystemColors.WindowText;
             this.weightUnitLabel.Location = new System.Drawing.Point(250, 100);
             this.weightUnitLabel.Name = "weightUnitLabel";
-            this.weightUnitLabel.Size = new System.Drawing.Size(62, 26);
+            this.weightUnitLabel.Size = new System.Drawing.Size(0, 24);
             this.weightUnitLabel.TabIndex = 5;
-            this.weightUnitLabel.Text = "label1";
             // 
             // calculateButton
             // 
@@ -202,7 +202,7 @@
             // 
             // statusTextBox
             // 
-            this.statusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusTextBox.Location = new System.Drawing.Point(148, 253);
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.Size = new System.Drawing.Size(144, 31);
