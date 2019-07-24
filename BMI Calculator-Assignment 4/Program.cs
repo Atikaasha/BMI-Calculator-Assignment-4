@@ -7,8 +7,8 @@ using System.Windows.Forms;
  * Description: COMP123 Assignment
  * Author: Chowdhury Atika Parvin
  * ID# 301007336
- * Version: 1.3 Progressbar Added
- * Last modified: July 22, 2019
+ * Version: 1.4 Exception Handling completed
+ * Last modified: July 23, 2019
  */
 namespace BMI_Calculator_Assignment_4
 {

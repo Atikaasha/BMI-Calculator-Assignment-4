@@ -13,7 +13,7 @@ namespace BMI_Calculator_Assignment_4
     public partial class BMICalculator : Form
     {
         public TextBox ActiveTextBox { get; set; }
-        public string OutPutString { get; set; }
+        //public string OutPutString { get; set; }
         private double Result { get; set; }
 
         public BMICalculator()
@@ -36,7 +36,14 @@ namespace BMI_Calculator_Assignment_4
                 switch (tag)
                 {
                     case "back":
-                        ActiveTextBox.Text = ActiveTextBox.Text.Remove(ActiveTextBox.Text.Length - 1);
+                        if(ActiveTextBox.Text.Length !=0)
+                        {
+                            ActiveTextBox.Text = ActiveTextBox.Text.Remove(ActiveTextBox.Text.Length - 1);
+                        }
+                        else
+                        {
+
+                        }                       
                         break;
                     case "reset":
                         Reset();
@@ -44,9 +51,7 @@ namespace BMI_Calculator_Assignment_4
                     case "calculate":
                         CalculateResult();
                         ShowStatus();
-                        break;
-                        
-
+                        break;                       
                 }
             }
         }
@@ -66,25 +71,40 @@ namespace BMI_Calculator_Assignment_4
         {
             heightTextBox.Text = "";
             weightTextBox.Text = "";
-            resultTextBox.Text = "";
+            resultTextBox.Text = "Your BMI";
             statusTextBox.Text = "";
             progressBar.Value = 0;
+
         }
 
-        private string CalculateResult()
+        private void CalculateResult()
         {
-            double height = Convert.ToDouble(heightTextBox.Text);
-            double weight = Convert.ToDouble(weightTextBox.Text);
-            //double result;
-            if(metricButton.Checked == true)
-            {
-                Result = (weight / height / height) * 10000;
+            bool heightIsNumeric = int.TryParse(heightTextBox.Text, out int myHeight);
+            bool weightIsNumeric = int.TryParse(weightTextBox.Text, out int myWeight);
+            if (heightTextBox.Text != "" && weightTextBox.Text != "" && heightIsNumeric && weightIsNumeric)
+            {   
+                double height = Convert.ToDouble(heightTextBox.Text);
+                double weight = Convert.ToDouble(weightTextBox.Text);
+                //double result;
+                if (metricButton.Checked == true)
+                {
+                    Result = (weight / height / height) * 10000;
+                    resultTextBox.Text = String.Format($"{Result:F2}".ToString());
+                }
+                else
+                {
+                    Result = weight * 703 / (height * height);
+                    resultTextBox.Text = String.Format($"{Result:F2}".ToString());
+                }            
             }
-            else
-            {
-                Result = weight * 703 / (height * height);
+            else if(Result<=0)
+            { 
+                resultTextBox.Text="Invalid value!!!";
+                resultTextBox.ForeColor = Color.Red;
+                progressBar.Value = 0;
+                statusTextBox.Text = "";
             }
-            return resultTextBox.Text = String.Format($"{Result:F2}".ToString());
+          
         }
 
         private void metricButton_Checked(object sender, EventArgs e)
@@ -101,7 +121,7 @@ namespace BMI_Calculator_Assignment_4
         private void ShowStatus()
         {
             progressBar.Maximum = 4;
-            if(Result<18.5)
+            if(Result<18.5 && Result>0)
             {
                 statusTextBox.Text = "Underweight";
                 statusTextBox.ForeColor = Color.Blue;

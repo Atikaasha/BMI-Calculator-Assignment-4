@@ -161,11 +161,13 @@
             // 
             // resultTextBox
             // 
-            this.resultTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultTextBox.ForeColor = System.Drawing.Color.LightGray;
+            this.resultTextBox.Enabled = false;
+            this.resultTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultTextBox.ForeColor = System.Drawing.Color.Black;
             this.resultTextBox.Location = new System.Drawing.Point(57, 183);
             this.resultTextBox.Name = "resultTextBox";
-            this.resultTextBox.Size = new System.Drawing.Size(203, 35);
+            this.resultTextBox.ReadOnly = true;
+            this.resultTextBox.Size = new System.Drawing.Size(203, 29);
             this.resultTextBox.TabIndex = 7;
             this.resultTextBox.Text = "Your BMI";
             this.resultTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -176,7 +178,7 @@
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.Location = new System.Drawing.Point(181, 141);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(111, 36);
+            this.resetButton.Size = new System.Drawing.Size(121, 36);
             this.resetButton.TabIndex = 8;
             this.resetButton.Tag = "reset";
             this.resetButton.Text = "Reset";
@@ -202,9 +204,11 @@
             // 
             // statusTextBox
             // 
+            this.statusTextBox.Enabled = false;
             this.statusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusTextBox.Location = new System.Drawing.Point(148, 253);
             this.statusTextBox.Name = "statusTextBox";
+            this.statusTextBox.ReadOnly = true;
             this.statusTextBox.Size = new System.Drawing.Size(144, 31);
             this.statusTextBox.TabIndex = 11;
             // 
@@ -259,7 +263,7 @@
             this.backButton.Size = new System.Drawing.Size(87, 26);
             this.backButton.TabIndex = 9;
             this.backButton.Tag = "back";
-            this.backButton.Text = "Del";
+            this.backButton.Text = "Del.";
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
