@@ -51,6 +51,7 @@ namespace BMI_Calculator_Assignment_4
                     case "calculate":
                         CalculateResult();
                         ShowStatus();
+                        Result = 0;
                         break;                       
                 }
             }
@@ -104,7 +105,7 @@ namespace BMI_Calculator_Assignment_4
                 progressBar.Value = 0;
                 statusTextBox.Text = "";
             }
-          
+           
         }
 
         private void metricButton_Checked(object sender, EventArgs e)
@@ -149,6 +150,12 @@ namespace BMI_Calculator_Assignment_4
                 progressBar.Value = 4;
                 progressBar.ForeColor = Color.Red;
             }
+        }
+
+        private void BMICalculator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+
         }
     }
 }
